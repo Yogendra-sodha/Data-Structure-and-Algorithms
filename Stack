@@ -1,0 +1,39 @@
+# Implmenting stack using list which follows LIFO principle which useful when needed to add use back button in web browsing.
+class Stack:
+    def __init__(self):
+        self.list = []    # Intisting empty list
+
+    def push(self,value):
+        self.list.append(value)         # Push element to stack by using append method
+        return "The element has been added"
+
+    def isEmpty(self):          # To Check if stack is empty
+        if self.list == [] :
+            return True
+
+    def peek(self):     # To go back to the last item
+        if self.isEmpty():
+            return "The stack is empty"
+        else:
+            return self.list[-1]
+
+    def delete(self):            # To remove the last item
+        if self.isEmpty():
+            return "The stack is empty"
+        else:
+            print("Item deleted")
+            return self.list.pop()
+
+    def __str__(self):         
+        values = self.list[::-1]
+        values = [str(x) for x in values]
+        return "\n".join(values)
+    
+cs = Stack()
+cs.push(1)
+cs.push(2)
+cs.push(3)
+cs.push(4)
+cs.delete()
+print(cs.peek())
+print(cs)
