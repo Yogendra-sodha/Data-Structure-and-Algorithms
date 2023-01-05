@@ -24,6 +24,16 @@ class operation:
         while temp is not None:
             print(temp.data)
             temp = temp.nextdata
+    def search(self,nodesearch):
+        if self.head == None:
+            return "LL is empty"
+        else:
+            temp = self.head
+            while temp is not None:
+                if temp.data == nodesearch:
+                    return temp.data
+                temp = temp.nextdata
+            return "Value does not exit"
     def deletefirst(self):
         if self.head == None:
             print("Empty linked list")
@@ -36,6 +46,4 @@ c.insert(1)
 c.insert(2)
 c.insert(3)
 c.insert(4)
-c.traverse()
-c.deletefirst()
-c.traverse()
+print(c.search(22))
