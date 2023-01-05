@@ -113,7 +113,7 @@ class CLL:
                 temp.next = nextNode.next
     def formatCLL(self):
         self.head = None
-        self.tail.next = self.head or 1
+        self.tail.next = self.head
         self.tail = None
 
 
