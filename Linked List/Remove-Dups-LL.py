@@ -18,7 +18,9 @@ def removeDups(ll):
 # Call class from linkedlist py file the body that was created
 
 customLL = LinkedListBody()
+# Then generating linked list by using method created in ll body.py file
 customLL.generate(5,3,6)
 print(customLL)
+# Using the function to remove the duplicate from generated linked list
 removeDups(customLL)
 print(customLL)
