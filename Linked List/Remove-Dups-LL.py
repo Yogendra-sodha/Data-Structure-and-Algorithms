@@ -15,6 +15,22 @@ def removeDups(ll):
                 temp = temp.next
         return ll
 
+# alternate method
+
+def remove_with_loop(ll):
+    temp = ll.head
+    while temp:
+        runner = temp
+        while runner.next: #1334
+            if runner.next.data == temp.data:
+                runner.next = runner.next.next
+            else:
+                runner = runner.next
+        temp = temp.next
+    return ll.head
+
+
+
 # Call class from linkedlist py file the body that was created
 
 customLL = LinkedListBody()
@@ -22,5 +38,5 @@ customLL = LinkedListBody()
 customLL.generate(5,3,6)
 print(customLL)
 # Using the function to remove the duplicate from generated linked list
-removeDups(customLL)
+remove_with_loop(customLL)
 print(customLL)
