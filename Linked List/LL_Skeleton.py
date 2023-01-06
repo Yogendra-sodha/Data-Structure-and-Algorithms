@@ -50,8 +50,3 @@ class LinkedListBody:
         for i in range(n):
             self.add(randint(min_range,max_range))
         return self
-
-    
-ll = LinkedListBody()
-print(ll.generate(5,22,99))
-print(len(ll))
