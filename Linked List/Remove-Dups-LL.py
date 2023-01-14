@@ -28,6 +28,7 @@ def remove_with_loop(ll):
                 runner = runner.next
         temp = temp.next
     return ll.head
+    
 
 
 
