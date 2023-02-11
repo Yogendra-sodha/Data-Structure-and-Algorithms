@@ -78,27 +78,25 @@ def levelOrderTraversal(rootNode):
         return
     cq = Queue()
     cq.enqueue(rootNode)
-    
+
     while not(cq.isEmpty()):
-        value = cq.dequeue()
-        print(value.data.name)
+        root = cq.dequeue()
+        print(root.data.name)
 
-        if value.data.leftchild is not None:
-            cq.enqueue(value.data.leftchild)
+        if root.data.leftchild is not None:
+            cq.enqueue(root.data.leftchild)
 
-        if value.data.rightchild is not None:
-            cq.enqueue(value.data.rightchild)
+        if root.data.rightchild is not None:
+            cq.enqueue(root.data.rightchild)
 
 def searchNode(rootNode, nodeValue):
     if not rootNode:
         return
-    
     else:
         cq = Queue()
         cq.enqueue(rootNode)
         while not(cq.isEmpty()):
             root = cq.dequeue()
-
             if root.data.name == nodeValue:
                 return root.data.name,"found in binary tree"
             if root.data.leftchild:
@@ -107,4 +105,106 @@ def searchNode(rootNode, nodeValue):
                 cq.enqueue(root.data.rightchild)
     return "value not found in bt"
 
-searchNode(rootValue,"cola")
+# print(searchNode(rootValue,"cola"))
+
+def insertion(rootNode,newNode):
+    if not rootNode:
+        return
+    cq = Queue()
+    cq.enqueue(rootNode)
+    while not(cq.isEmpty()):
+        root = cq.dequeue()
+        if root.data.leftchild == None:
+            root.data.leftchild = newNode
+            return newNode.name,"inserted in left subtree"
+        else:
+            cq.enqueue(root.data.leftchild)
+
+        if root.data.rightchild == None:
+            root.data.rightchild = newNode
+            return newNode.name,"inserted in right subtree"
+        else:
+            cq.enqueue(root.data.rightchild)
+
+
+def getDeepestNode(rootNode):
+    if rootNode is None:
+        return
+    else:
+        cq = Queue()
+        cq.enqueue(rootNode)
+        while not(cq.isEmpty()):
+            root = cq.dequeue()
+
+            if root.data.leftchild is not None:
+                cq.enqueue(root.data.leftchild)
+            if root.data.rightchild is not None:
+                cq.enqueue(root.data.rightchild)
+        dnode = root.data
+        return dnode
+
+# print(getDeepestNode(rootValue))
+newNode = TreeNode("cherry-coke")
+insertion(rootValue,newNode)
+# print(getDeepestNode(rootValue))
+
+def delDeepestNode(rootNode,dNode):
+    if rootNode is None:
+        return
+    else:
+        cq = Queue()
+        cq.enqueue(rootNode)
+        while not(cq.isEmpty()):
+            root = cq.dequeue()
+            if root.data is dNode:
+                root.data = None
+                return
+
+            if root.data.leftchild:
+                if root.data.leftchild == dNode:
+                    root.data.leftchild = None
+                    return
+                else:
+                    cq.enqueue(root.data.leftchild)
+
+            if root.data.rightchild is not None:
+                if root.data.rightchild == dNode:
+                    root.data.rightchild = None
+                    return
+                else:
+                    cq.enqueue(root.data.rightchild)
+        return "deleted deepest node"
+
+# dNode = getDeepestNode(rootValue)
+# print(delDeepestNode(rootValue,dNode))
+# levelOrderTraversal(rootValue)
+
+def deleteNode(rootValue,node):
+    if rootValue is None:
+        return
+    else:
+        cq = Queue()
+        cq.enqueue(rootValue)
+
+        while not(cq.isEmpty()):
+            root = cq.dequeue()
+            if root.data.name == node:
+                dNode = getDeepestNode(rootValue)
+                root.data.name = dNode.name
+                delDeepestNode(rootValue,dNode)
+                return "node deleted"
+            if root.data.leftchild is not None:
+                cq.enqueue(root.data.leftchild)
+            if root.data.rightchild is not None:
+                cq.enqueue(root.data.rightchild)
+
+def delentireTree(rootNode):
+    rootNode.name = None
+    rootNode.leftchild = None
+    rootNode.rightchild = None
+
+# levelOrderTraversal(rootValue)
+# print(deleteNode(rootValue,"hot"))
+# print(levelOrderTraversal(rootValue))
+print(delentireTree(rootValue))
+print(levelOrderTraversal(rootValue))
