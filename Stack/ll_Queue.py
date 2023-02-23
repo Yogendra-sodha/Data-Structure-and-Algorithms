@@ -62,9 +62,13 @@ class Queue:
         self.llq.tail = None
         return "Queue cleared"
 
-csllq = Queue()
-(csllq.enqueue(2))
-(csllq.enqueue(3))
-(csllq.enqueue(1))
-print(csllq.delete())
-# assa
+# csllq = Queue()
+# (csllq.enqueue(2))
+# (csllq.enqueue(3))
+# (csllq.enqueue(1))
+# print(csllq.delete())
+# # assa
+
+import os
+print()
+print(os.getcwd())
