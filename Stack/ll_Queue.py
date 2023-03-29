@@ -67,8 +67,3 @@ class Queue:
 # (csllq.enqueue(3))
 # (csllq.enqueue(1))
 # print(csllq.delete())
-# # assa
-
-import os
-print()
-print(os.getcwd())

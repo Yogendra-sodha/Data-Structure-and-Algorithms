@@ -11,8 +11,6 @@ class LinkedList:
         self.head = None
         self.tail = None
     
-    
-
 class Queue:
     def __init__(self):
         self.linkedList = LinkedList()
@@ -57,8 +55,6 @@ class Queue:
     def delete(self):
         self.linkedList.head = None
         self.linkedList.tail = None
-
-
 
 class binary_search_tree:
     def __init__(self,data):
@@ -153,8 +149,8 @@ def deleteNode(rootNode,nodeValue):
         temp = minValue(rootNode.rightchild)
         rootNode.data = temp.data
         rootNode.rightchild = deleteNode(rootNode.rightchild,temp.data)
+        
     return rootNode
-
 
 bst = binary_search_tree(None)
 insertion(bst,50)
